@@ -1,921 +1,1413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HN INFOTECH - Complete IT Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #3b82f6;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --success: #10b981;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            background-color: var(--primary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            color: Var(blue);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .cta-button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .cta-button:hover {
-            background-color: var(--secondary);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Services Section */
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-
-        .section-title p {
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .services {
-            padding: 100px 0;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-icon {
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 30px;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .service-card p {
-            color: var(--gray);
-        }
-
-        /* Partners Section */
-        .partners {
-            padding: 80px 0;
-            background-color: white;
-        }
-
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            align-items: center;
-            justify-items: center;
-        }
-
-        .partner-logo {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /*filter: grayscale(100%);
-            opacity: 0.7;*/
-            transition: all 0.3s ease;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .partner-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.55);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .partner-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        /* Clients Section */
-        .clients {
-            padding: 80px 0;
-            background-color: #f1f5f9;
-        }
-
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            align-items: center;
-            justify-items: center;
-        }
-
-        .client-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .client-logo {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /*filter: grayscale(100%);
-            opacity: 0.7;*/
-            transition: all 0.3s ease;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            margin-bottom: 15px;
-        }
-
-        .client-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .client-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .client-name {
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 1.1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background-color: white;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-
-        .contact-icon {
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .contact-details h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--dark);
-        }
-
-        .contact-details p {
-            color: var(--gray);
-        }
-
-        .contact-form {
-            background-color: #f8fafc;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 70px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: background-color 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .partners-grid, .clients-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                text-align: center;
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .hero {
-                padding: 80px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .services, .contact {
-                padding: 70px 0;
-            }
-            
-            .partners-grid, .clients-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-button {
-                width: 100%;
-                max-width: 250px;
-            }
-            
-            .partners-grid, .clients-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .partner-logo, .client-logo {
-                height: 60px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HN Infotech — Complete IT Solutions in Kolkata</title>
+  <meta name="description" content="HN Infotech delivers complete IT solutions in Kolkata — IT Infrastructure, Cybersecurity, Networking, CCTV, AMC, Hardware & Custom Development. Trusted by top businesses.">
+  <meta property="og:title" content="HN Infotech — Complete IT Solutions in Kolkata">
+  <meta property="og:description" content="End-to-end IT solutions trusted by leading Kolkata businesses. Infrastructure, Security, Networking & more.">
+  <meta property="og:image" content="HN_logo.png">
+  <link rel="icon" href="HN_logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ===================== TOKENS ===================== */
+    :root {
+      --navy:   #0a1628;
+      --navy2:  #0f2040;
+      --blue:   #1a56db;
+      --blue2:  #2563eb;
+      --sky:    #38bdf8;
+      --amber:  #f59e0b;
+      --amber2: #fbbf24;
+      --white:  #ffffff;
+      --off:    #f0f4ff;
+      --slate:  #64748b;
+      --light:  #e8eef8;
+      --dark:   #0d1b33;
+      --text:   #1e2d4a;
+      --muted:  #5b6f8f;
+      --card:   #ffffff;
+      --border: rgba(26,86,219,0.12);
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(10,22,40,0.10);
+      --shadow-lg: 0 12px 48px rgba(10,22,40,0.16);
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    /* ===================== RESET ===================== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { max-width:100%; display:block; }
+    a { text-decoration:none; color:inherit; }
+    ul { list-style:none; }
+
+    /* ===================== UTILITY ===================== */
+    .container { width:92%; max-width:1180px; margin:0 auto; }
+    .tag {
+      display:inline-block;
+      font-family: var(--font-head);
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: var(--blue);
+      background: rgba(26,86,219,0.08);
+      padding:5px 14px;
+      border-radius:100px;
+      margin-bottom:16px;
+    }
+    .section-head { text-align:center; margin-bottom:56px; }
+    .section-head h2 {
+      font-family: var(--font-head);
+      font-size:clamp(1.9rem,4vw,2.7rem);
+      font-weight:800;
+      color: var(--dark);
+      line-height:1.18;
+      margin-bottom:14px;
+    }
+    .section-head p {
+      color: var(--muted);
+      font-size:1.05rem;
+      max-width:580px;
+      margin:0 auto;
+    }
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-family: var(--font-body);
+      font-weight:600;
+      font-size:.95rem;
+      padding:13px 26px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:all .22s ease;
+      border:none;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--navy2); transform:translateY(-2px); box-shadow:0 8px 24px rgba(26,86,219,.35); }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,.45);
+    }
+    .btn-outline:hover { background:rgba(255,255,255,.12); border-color:#fff; }
+    .btn-amber {
+      background: var(--amber);
+      color: var(--dark);
+    }
+    .btn-amber:hover { background: var(--amber2); transform:translateY(-2px); box-shadow:0 8px 24px rgba(245,158,11,.4); }
+
+    /* ===================== HEADER ===================== */
+    header {
+      position:sticky;
+      top:0;
+      z-index:900;
+      background:rgba(255,255,255,.97);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      box-shadow:0 2px 16px rgba(10,22,40,.07);
+      transition:box-shadow .3s;
+    }
+    .navbar {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:70px;
+      gap:24px;
+    }
+    .logo {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-shrink:0;
+    }
+    .logo img { height:40px; width:auto; border-radius:6px; }
+    .logo-fallback {
+      width:42px; height:42px;
+      background:linear-gradient(135deg,var(--blue),var(--navy));
+      border-radius:8px;
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-head);
+      font-weight:800; font-size:15px; color:#fff;
+      letter-spacing:-.5px;
+    }
+    .logo-text {
+      font-family: var(--font-head);
+      font-weight:800;
+      font-size:1.2rem;
+      color: var(--dark);
+      letter-spacing:-.02em;
+    }
+    .logo-text span { color: var(--blue); }
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .nav-links a {
+      font-weight:500;
+      font-size:.92rem;
+      color: var(--text);
+      padding:7px 13px;
+      border-radius:6px;
+      transition:all .18s;
+    }
+    .nav-links a:hover { color:var(--blue); background:rgba(26,86,219,.06); }
+    .nav-right { display:flex; align-items:center; gap:10px; }
+    .nav-quote {
+      font-family: var(--font-body);
+      font-weight:600;
+      font-size:.88rem;
+      background:var(--blue);
+      color:#fff;
+      padding:9px 18px;
+      border-radius:7px;
+      border:none;
+      cursor:pointer;
+      transition:all .2s;
+      display:inline-flex; align-items:center; gap:6px;
+    }
+    .nav-quote:hover { background:var(--navy); transform:translateY(-1px); }
+    .hamburger {
+      display:none;
+      flex-direction:column;
+      gap:5px;
+      cursor:pointer;
+      padding:6px;
+      border:none;
+      background:none;
+    }
+    .hamburger span {
+      display:block;
+      width:24px; height:2.5px;
+      background:var(--dark);
+      border-radius:2px;
+      transition:all .3s;
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      background: var(--navy);
+      position:relative;
+      overflow:hidden;
+      padding:100px 0 80px;
+    }
+    /* Geometric background pattern */
+    .hero::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,86,219,.35) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(56,189,248,.15) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .hero-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+      position:relative;
+    }
+    .hero-left { }
+    .hero-eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(56,189,248,.12);
+      border:1px solid rgba(56,189,248,.3);
+      color: var(--sky);
+      font-family:var(--font-head);
+      font-size:.75rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      padding:6px 14px;
+      border-radius:100px;
+      margin-bottom:24px;
+    }
+    .hero-eyebrow i { font-size:.7rem; }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size:clamp(2rem,5vw,3.4rem);
+      font-weight:800;
+      color:#fff;
+      line-height:1.12;
+      margin-bottom:22px;
+      letter-spacing:-.03em;
+    }
+    .hero h1 em {
+      font-style:normal;
+      color:var(--amber);
+    }
+    .hero-sub {
+      color:rgba(255,255,255,.72);
+      font-size:1.05rem;
+      line-height:1.7;
+      max-width:480px;
+      margin-bottom:36px;
+    }
+    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; }
+    .hero-stats {
+      display:flex;
+      gap:32px;
+      flex-wrap:wrap;
+      padding-top:32px;
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+    .stat-item { }
+    .stat-num {
+      font-family:var(--font-head);
+      font-size:1.9rem;
+      font-weight:800;
+      color:#fff;
+      line-height:1;
+    }
+    .stat-num span { color:var(--amber); }
+    .stat-label {
+      font-size:.82rem;
+      color:rgba(255,255,255,.55);
+      margin-top:4px;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      font-weight:500;
+    }
+
+    /* Hero right — visual card stack */
+    .hero-right { position:relative; }
+    .hero-visual {
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:20px;
+      padding:32px;
+      backdrop-filter:blur(8px);
+    }
+    .hero-visual-title {
+      font-family:var(--font-head);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.45);
+      margin-bottom:20px;
+    }
+    .service-pills {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:24px;
+    }
+    .service-pill {
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      color:rgba(255,255,255,.85);
+      font-size:.82rem;
+      font-weight:500;
+      padding:7px 13px;
+      border-radius:100px;
+      transition:all .2s;
+    }
+    .service-pill i { color:var(--sky); font-size:.75rem; }
+    .service-pill:hover { background:rgba(56,189,248,.15); border-color:rgba(56,189,248,.4); }
+    .hero-trust {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      background:rgba(245,158,11,.1);
+      border:1px solid rgba(245,158,11,.25);
+      border-radius:10px;
+      padding:14px 18px;
+    }
+    .hero-trust i { color:var(--amber); font-size:1.3rem; flex-shrink:0; }
+    .hero-trust p { font-size:.84rem; color:rgba(255,255,255,.75); line-height:1.4; }
+    .hero-trust strong { color:#fff; }
+
+    /* Floating badge */
+    .hero-badge {
+      position:absolute;
+      bottom:18px;
+      right:18px;
+      background:var(--amber);
+      color:var(--dark);
+      width:80px; height:80px;
+      border-radius:50%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      font-family:var(--font-head);
+      font-weight:800;
+      box-shadow:0 6px 24px rgba(245,158,11,.5);
+      animation:spin-slow 12s linear infinite;
+      z-index:2;
+    }
+    .hero-badge .badge-num { font-size:1.4rem; line-height:1; }
+    .hero-badge .badge-txt { font-size:.55rem; letter-spacing:.08em; text-transform:uppercase; }
+    @keyframes spin-slow { to { transform:rotate(360deg); } }
+
+    /* ===================== MARQUEE STRIP ===================== */
+    .marquee-strip {
+      background:var(--blue);
+      padding:14px 0;
+      overflow:hidden;
+    }
+    .marquee-inner {
+      display:flex;
+      gap:0;
+      animation:marquee 28s linear infinite;
+      width:max-content;
+    }
+    .marquee-item {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:0 32px;
+      font-family:var(--font-head);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.85);
+      white-space:nowrap;
+    }
+    .marquee-item i { color:var(--amber2); font-size:.7rem; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ===================== ABOUT ===================== */
+    .about { padding:96px 0; background:var(--off); }
+    .about-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:72px;
+      align-items:center;
+    }
+    .about-left { }
+    .about-left h2 {
+      font-family:var(--font-head);
+      font-size:clamp(1.8rem,3.5vw,2.5rem);
+      font-weight:800;
+      color:var(--dark);
+      line-height:1.18;
+      margin-bottom:20px;
+      letter-spacing:-.03em;
+    }
+    .about-left p {
+      color:var(--muted);
+      font-size:1rem;
+      line-height:1.75;
+      margin-bottom:16px;
+    }
+    .about-points { margin-top:28px; display:flex; flex-direction:column; gap:14px; }
+    .about-point {
+      display:flex;
+      align-items:flex-start;
+      gap:13px;
+    }
+    .about-point-icon {
+      width:36px; height:36px;
+      border-radius:8px;
+      background:rgba(26,86,219,.1);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--blue);
+      font-size:.9rem;
+      flex-shrink:0;
+    }
+    .about-point-text strong { display:block; font-weight:600; color:var(--dark); font-size:.95rem; }
+    .about-point-text span { color:var(--muted); font-size:.88rem; }
+    .about-right { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .about-card {
+      background:var(--white);
+      border-radius:14px;
+      padding:28px 22px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--border);
+      text-align:center;
+      transition:transform .25s, box-shadow .25s;
+    }
+    .about-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
+    .about-card:nth-child(2) { margin-top:28px; }
+    .about-card:nth-child(4) { margin-top:28px; }
+    .about-card-num {
+      font-family:var(--font-head);
+      font-size:2.4rem;
+      font-weight:800;
+      color:var(--blue);
+      line-height:1;
+      margin-bottom:6px;
+    }
+    .about-card-num span { color:var(--amber); }
+    .about-card p { font-size:.85rem; color:var(--muted); font-weight:500; }
+
+    /* ===================== WHY US ===================== */
+    .why-us { padding:80px 0; background:#fff; }
+    .why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+    .why-card {
+      background:var(--off);
+      border-radius:var(--radius);
+      padding:30px 24px;
+      border:1px solid var(--border);
+      transition:all .25s;
+      position:relative;
+      overflow:hidden;
+    }
+    .why-card::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,var(--blue) 0%,var(--navy) 100%);
+      opacity:0;
+      transition:opacity .25s;
+    }
+    .why-card:hover::before { opacity:1; }
+    .why-card:hover .why-icon,
+    .why-card:hover h3,
+    .why-card:hover p { color:#fff; }
+    .why-card:hover .why-icon { background:rgba(255,255,255,.15); }
+    .why-card > * { position:relative; }
+    .why-icon {
+      width:50px; height:50px;
+      border-radius:10px;
+      background:rgba(26,86,219,.1);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--blue);
+      font-size:1.2rem;
+      margin-bottom:18px;
+      transition:all .25s;
+    }
+    .why-card h3 {
+      font-family:var(--font-head);
+      font-size:1rem;
+      font-weight:700;
+      color:var(--dark);
+      margin-bottom:8px;
+      transition:color .25s;
+    }
+    .why-card p { font-size:.87rem; color:var(--muted); line-height:1.6; transition:color .25s; }
+
+    /* ===================== SERVICES ===================== */
+    .services { padding:96px 0; background:var(--off); }
+    .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .service-card {
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:32px 28px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      transition:all .28s;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .service-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:var(--blue2); }
+    .service-icon {
+      width:56px; height:56px;
+      border-radius:12px;
+      background:rgba(26,86,219,.08);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--blue);
+      font-size:1.3rem;
+    }
+    .service-card h3 {
+      font-family:var(--font-head);
+      font-size:1.05rem;
+      font-weight:700;
+      color:var(--dark);
+    }
+    .service-card p { font-size:.88rem; color:var(--muted); line-height:1.65; flex:1; }
+    .service-link {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:.85rem;
+      font-weight:600;
+      color:var(--blue);
+      margin-top:4px;
+      transition:gap .2s;
+    }
+    .service-card:hover .service-link { gap:10px; }
+
+    /* ===================== PARTNERS ===================== */
+    .partners { padding:80px 0; background:#fff; }
+    .partners-grid {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:20px;
+    }
+    .partner-logo {
+      background:var(--off);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:90px;
+      transition:all .25s;
+      filter:grayscale(40%);
+      opacity:.8;
+    }
+    .partner-logo:hover { filter:grayscale(0); opacity:1; transform:translateY(-3px); box-shadow:var(--shadow); }
+    .partner-logo img { max-height:50px; object-fit:contain; }
+
+    /* ===================== CLIENTS ===================== */
+    .clients { padding:80px 0; background:var(--off); }
+    .clients-grid {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:20px;
+    }
+    .client-card {
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:24px 16px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+      text-align:center;
+      box-shadow:var(--shadow);
+      transition:all .25s;
+    }
+    .client-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--blue2); }
+    .client-card img { height:56px; object-fit:contain; }
+    .client-card-name { font-size:.82rem; font-weight:600; color:var(--dark); line-height:1.3; }
+
+    /* ===================== TESTIMONIALS ===================== */
+    .testimonials { padding:96px 0; background:var(--navy); }
+    .testimonials .section-head h2 { color:#fff; }
+    .testimonials .section-head p { color:rgba(255,255,255,.55); }
+    .testimonials .tag { background:rgba(56,189,248,.12); color:var(--sky); }
+    .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .testi-card {
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:16px;
+      padding:32px;
+      transition:all .25s;
+    }
+    .testi-card:hover { background:rgba(255,255,255,.08); transform:translateY(-4px); }
+    .testi-stars { color:var(--amber); font-size:.9rem; letter-spacing:2px; margin-bottom:16px; }
+    .testi-text { color:rgba(255,255,255,.75); font-size:.94rem; line-height:1.7; margin-bottom:24px; font-style:italic; }
+    .testi-author { display:flex; align-items:center; gap:12px; }
+    .testi-avatar {
+      width:44px; height:44px; border-radius:50%;
+      background:linear-gradient(135deg,var(--blue),var(--sky));
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-head);
+      font-weight:700;
+      color:#fff;
+      font-size:1rem;
+      flex-shrink:0;
+    }
+    .testi-name { font-weight:600; color:#fff; font-size:.9rem; }
+    .testi-role { color:rgba(255,255,255,.45); font-size:.8rem; }
+
+    /* ===================== CONTACT ===================== */
+    .contact { padding:96px 0; background:#fff; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:60px; align-items:start; }
+    .contact-left { }
+    .contact-left h2 {
+      font-family:var(--font-head);
+      font-size:clamp(1.8rem,3.5vw,2.4rem);
+      font-weight:800;
+      color:var(--dark);
+      line-height:1.2;
+      margin-bottom:16px;
+      letter-spacing:-.03em;
+    }
+    .contact-left > p { color:var(--muted); font-size:1rem; line-height:1.7; margin-bottom:36px; }
+    .contact-items { display:flex; flex-direction:column; gap:20px; }
+    .contact-item {
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+    }
+    .contact-icon {
+      width:46px; height:46px;
+      border-radius:10px;
+      background:rgba(26,86,219,.08);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--blue);
+      font-size:1rem;
+      flex-shrink:0;
+    }
+    .contact-detail strong { display:block; font-weight:600; color:var(--dark); font-size:.92rem; margin-bottom:3px; }
+    .contact-detail span { color:var(--muted); font-size:.87rem; }
+    .contact-detail a { color:var(--blue); }
+
+    /* Map embed placeholder */
+    .map-embed {
+      margin-top:28px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      height:180px;
+    }
+    .map-embed iframe { width:100%; height:100%; border:none; }
+
+    /* Form */
+    .contact-form {
+      background:var(--off);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:40px 36px;
+      box-shadow:var(--shadow);
+    }
+    .contact-form h3 {
+      font-family:var(--font-head);
+      font-size:1.35rem;
+      font-weight:800;
+      color:var(--dark);
+      margin-bottom:6px;
+    }
+    .contact-form > p { color:var(--muted); font-size:.9rem; margin-bottom:28px; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .form-group { margin-bottom:16px; }
+    .form-group label { display:block; font-weight:600; font-size:.83rem; color:var(--text); margin-bottom:7px; letter-spacing:.01em; }
+    .form-control {
+      width:100%;
+      padding:12px 15px;
+      font-family:var(--font-body);
+      font-size:.93rem;
+      color:var(--text);
+      background:#fff;
+      border:1.5px solid #dce6f5;
+      border-radius:8px;
+      transition:border-color .2s, box-shadow .2s;
+      outline:none;
+    }
+    .form-control:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(26,86,219,.1); }
+    select.form-control { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b6f8f' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; }
+    textarea.form-control { min-height:110px; resize:vertical; }
+    .form-submit { width:100%; justify-content:center; font-size:1rem; padding:14px; border-radius:9px; margin-top:4px; }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background:var(--navy);
+      color:rgba(255,255,255,.7);
+      padding:72px 0 0;
+    }
+    .footer-grid {
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
+      gap:40px;
+      margin-bottom:60px;
+    }
+    .footer-brand p {
+      font-size:.88rem;
+      line-height:1.7;
+      margin:16px 0 24px;
+      color:rgba(255,255,255,.5);
+      max-width:260px;
+    }
+    .footer-logo-text {
+      font-family:var(--font-head);
+      font-weight:800;
+      font-size:1.2rem;
+      color:#fff;
+    }
+    .footer-logo-text span { color:var(--sky); }
+    .social-links { display:flex; gap:10px; }
+    .social-links a {
+      width:38px; height:38px;
+      border-radius:8px;
+      background:rgba(255,255,255,.07);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.6);
+      font-size:.9rem;
+      transition:all .2s;
+    }
+    .social-links a:hover { background:var(--blue); color:#fff; }
+    .footer-col h4 {
+      font-family:var(--font-head);
+      font-weight:700;
+      font-size:.9rem;
+      color:#fff;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+    .footer-col ul li { margin-bottom:10px; }
+    .footer-col ul a {
+      color:rgba(255,255,255,.5);
+      font-size:.88rem;
+      transition:color .18s;
+    }
+    .footer-col ul a:hover { color:#fff; }
+    .footer-contact-item { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; }
+    .footer-contact-item i { color:var(--sky); font-size:.85rem; margin-top:3px; flex-shrink:0; }
+    .footer-contact-item span { font-size:.85rem; color:rgba(255,255,255,.5); line-height:1.5; }
+    .footer-bottom {
+      border-top:1px solid rgba(255,255,255,.07);
+      padding:22px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+    .footer-bottom p { font-size:.82rem; color:rgba(255,255,255,.3); }
+    .footer-bottom a { color:rgba(255,255,255,.45); font-size:.82rem; }
+    .footer-bottom a:hover { color:#fff; }
+
+    /* ===================== WHATSAPP FLOAT ===================== */
+    .whatsapp-float {
+      position:fixed;
+      bottom:28px;
+      right:28px;
+      z-index:999;
+      width:56px; height:56px;
+      border-radius:50%;
+      background:#25d366;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff;
+      font-size:1.5rem;
+      box-shadow:0 4px 20px rgba(37,211,102,.5);
+      transition:all .25s;
+      animation:float-pulse 2.5s ease-in-out infinite;
+    }
+    .whatsapp-float:hover { transform:scale(1.1); box-shadow:0 8px 28px rgba(37,211,102,.6); }
+    @keyframes float-pulse {
+      0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5);}
+      50%{box-shadow:0 4px 32px rgba(37,211,102,.8);}
+    }
+
+    /* ===================== SCROLL ANIMATIONS ===================== */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width:1024px) {
+      .hero-grid { grid-template-columns:1fr; gap:40px; }
+      .hero-right { display:none; }
+      .hero h1 { font-size:2.4rem; }
+      .about-grid { grid-template-columns:1fr; gap:40px; }
+      .about-right { grid-template-columns:repeat(4,1fr); }
+      .about-card:nth-child(2), .about-card:nth-child(4) { margin-top:0; }
+      .why-grid { grid-template-columns:repeat(2,1fr); }
+      .services-grid { grid-template-columns:repeat(2,1fr); }
+      .partners-grid { grid-template-columns:repeat(3,1fr); }
+      .clients-grid { grid-template-columns:repeat(3,1fr); }
+      .testi-grid { grid-template-columns:1fr; gap:16px; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .contact-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:768px) {
+      .nav-links { display:none; position:absolute; top:70px; left:0; right:0; background:#fff; flex-direction:column; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,.1); border-bottom:1px solid var(--border); gap:4px; }
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .nav-right .nav-quote { display:none; }
+      .hero { padding:72px 0 64px; }
+      .about-right { grid-template-columns:1fr 1fr; }
+      .why-grid { grid-template-columns:1fr; }
+      .services-grid { grid-template-columns:1fr; }
+      .partners-grid { grid-template-columns:repeat(2,1fr); }
+      .clients-grid { grid-template-columns:repeat(2,1fr); }
+      .form-row { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+      .footer-bottom { flex-direction:column; text-align:center; }
+    }
+    @media (max-width:480px) {
+      .hero-stats { gap:20px; }
+      .about-right { grid-template-columns:1fr 1fr; }
+      .partners-grid, .clients-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <img src="HN_logo.png" alt="HN Infotech Logo">
-                    <div class="logo-text">HN INFOTECH</div>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#partners">Partners</a></li>
-                    <li><a href="#clients">Clients</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+
+<!-- ========== HEADER ========== -->
+<header id="top">
+  <div class="container">
+    <nav class="navbar">
+      <a href="#home" class="logo">
+        <img src="HN_logo.png" alt="HN Infotech Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="logo-fallback" style="display:none">HN</div>
+        <div class="logo-text">HN <span>INFOTECH</span></div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#contact" class="nav-quote"><i class="fas fa-paper-plane"></i> Get a Quote</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-eyebrow"><i class="fas fa-circle"></i> Kolkata's Emerging IT Partner</div>
+        <h1>Your IT. <em>Simplified.</em><br>Your Business, Amplified.</h1>
+        <p class="hero-sub">HN Infotech delivers end-to-end IT infrastructure, cybersecurity, networking, and digital solutions — engineered for businesses that demand reliability and performance.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-amber"><i class="fas fa-paper-plane"></i> Get Free Consultation</a>
+          <a href="#services" class="btn btn-outline"><i class="fas fa-chevron-down"></i> Explore Services</a>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Complete IT Solutions for Your Business</h1>
-            <p>We provide cutting-edge technology solutions to help your business thrive in the digital age. From infrastructure to cybersecurity, we've got you covered.</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">99<span>%</span></div>
+            <div class="stat-label">Uptime SLA</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">24<span>/7</span></div>
+            <div class="stat-label">Support Ready</div>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="hero-right">
+          <div class="hero-visual" style="position:relative;">
+            <div class="hero-visual-title">Our Expertise</div>
+            <div class="service-pills">
+              <div class="service-pill"><i class="fas fa-network-wired"></i> IT Infrastructure</div>
+              <div class="service-pill"><i class="fas fa-shield-alt"></i> Cybersecurity</div>
+              <div class="service-pill"><i class="fas fa-server"></i> Networking</div>
+              <div class="service-pill"><i class="fas fa-video"></i> CCTV / Surveillance</div>
+              <div class="service-pill"><i class="fas fa-cloud-upload-alt"></i> Backup Solutions</div>
+              <div class="service-pill"><i class="fas fa-tools"></i> AMC Support</div>
+              <div class="service-pill"><i class="fas fa-laptop-code"></i> IT Consulting</div>
+              <div class="service-pill"><i class="fas fa-globe"></i> Web Development</div>
+            </div>
+            <div class="hero-trust">
+              <i class="fas fa-shield-check"></i>
+              <p><strong>Certified & Trusted</strong> — Partnered with AWS, Cisco, Fortinet, CrowdStrike & more for enterprise-grade solutions.</p>
+            </div>
+            <div class="hero-badge">
+              <div class="badge-num">HNI</div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Core Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Core Services</h2>
-                <p>Comprehensive IT services designed to meet your business needs and drive growth</p>
+<!-- ========== MARQUEE ========== -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item"><i class="fas fa-star"></i> IT Infrastructure</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Cybersecurity</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Network Design</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> CCTV Solutions</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Cloud Backup</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> IT Consulting</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Annual Maintenance</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Hardware Sales</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Web Development</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item"><i class="fas fa-star"></i> IT Infrastructure</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Cybersecurity</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Network Design</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> CCTV Solutions</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Cloud Backup</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> IT Consulting</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Annual Maintenance</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Hardware Sales</span>
+    <span class="marquee-item"><i class="fas fa-star"></i> Web Development</span>
+  </div>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left fade-up">
+        <div class="tag">Who We Are</div>
+        <h2>Kolkata's Growing IT Solutions Partner — Founded 2023</h2>
+        <p>HN Infotech is a Kolkata-based IT solutions company serving enterprises, mid-sized businesses, and premium brands across Eastern India. We combine deep technical expertise with a customer-first approach to deliver IT that simply works.</p>
+        <p>From setting up secure network infrastructure for a restaurant chain to deploying enterprise backup systems for a research lab — we bring the same dedication and precision to every project we take on.</p>
+        <div class="about-points">
+          <div class="about-point">
+            <div class="about-point-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="about-point-text">
+              <strong>Locally Present, Rapidly Responsive</strong>
+              <span>Based in Kolkata. On-site within hours, not days.</span>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>IT Consulting</h3>
-                    <p>Strategic technology planning and advisory services to align IT with your business goals.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>IT Infrastructure</h3>
-                    <p>End-to-end setup and support for robust and reliable IT infrastructure.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Network Infrastructure</h3>
-                    <p>Design and implementation of secure and scalable network solutions.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h3>IT Hardware Sales</h3>
-                    <p>Desktops, Laptops, Servers, and more from leading manufacturers.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Maintenance & AMC</h3>
-                    <p>Reliable annual maintenance contracts to ensure uninterrupted operations.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Cybersecurity</h3>
-                    <p>Comprehensive protection against cyber threats with advanced security solutions.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Surveillance (CCTV)</h3>
-                    <p>Advanced CCTV camera solutions for enhanced security and monitoring.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <h3>Backup Solutions</h3>
-                    <p>On-premise and SaaS backup solutions to protect your valuable data.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Custom Development</h3>
-                    <p>Custom design and development services tailored to your specific needs.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Enterprise Backup</h3>
-                    <p>Robust enterprise backup solutions for business continuity.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Website Development</h3>
-                    <p>Professional website development services to establish your online presence.</p>
-                </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon"><i class="fas fa-certificate"></i></div>
+            <div class="about-point-text">
+              <strong>Certified Engineers</strong>
+              <span>Trained & authorised on leading technology platforms.</span>
             </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon"><i class="fas fa-handshake"></i></div>
+            <div class="about-point-text">
+              <strong>Transparent & Accountable</strong>
+              <span>No hidden costs. Clear SLAs. Proactive communication.</span>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section class="partners" id="partners">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Trusted Partners</h2>
-                <p>We collaborate with industry leaders to deliver the best technology solutions</p>
-            </div>
-            <div class="partners-grid">
-                <div class="partner-logo">
-                    <img src="aws_logo.png" alt="AWS">
-                </div>
-                <div class="partner-logo">
-                    <img src="Cisco_logo.png" alt="Cisco">
-                </div>
-                <div class="partner-logo">
-                    <img src="NinjaOne_logo.png" alt="NinjaOne">
-                </div>
-                <div class="partner-logo">
-                    <img src="acronis_logo.png" alt="Acronis">
-                </div>
-                <div class="partner-logo">
-                    <img src="Fortinet_logo.png" alt="Fortigate">
-                </div>
-                <div class="partner-logo">
-                    <img src="Crowedstrike_logo.png" alt="CrowdStrike">
-                </div>
-                <div class="partner-logo">
-                    <img src="Sophos_logo.png" alt="Sophos">
-                </div>
-                <div class="partner-logo">
-                    <img src="Tm_logo.png" alt="TrendMicro">
-                </div>
-                <div class="partner-logo">
-                    <img src="checkpoint_logo.png" alt="Checkpoint">
-                </div>
-                <div class="partner-logo">
-                    <img src="tplink_logo.png" alt="TP-Link">
-                </div>
-            </div>
+      </div>
+      <div class="about-right fade-up">
+        <div class="about-card">
+          <div class="about-card-num">2023</div>
+          <p>Year Founded</p>
         </div>
-    </section>
-
-    <!-- Clients Section -->
-    <section class="clients" id="clients">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Valued Clients</h2>
-                <p>We're proud to serve these distinguished organizations with our IT solutions</p>
-            </div>
-            <div class="clients-grid">
-                <div class="client-item">
-                    <div class="client-logo">
-                        <img src="AOBPL_logo.png" alt="AOBPL">
-                    </div>
-                    <div class="client-name">Apeejay Oxford Bookstores PVT LTD</div>
-                </div>
-                <div class="client-item">
-                    <div class="client-logo">
-                        <img src="pdxrl_research_lab_logo.jpg" alt="PDX Research Lab">
-                    </div>
-                    <div class="client-name">PDxRL</div>
-                </div>
-                <div class="client-item">
-                    <div class="client-logo">
-                        <img src="Alpha_logo.png" alt="Alpha Corp">
-                    </div>
-                    <div class="client-name">ALPHACORP</div>
-                </div>
-                <div class="client-item">
-                    <div class="client-logo">
-                        <img src="Skylink_logo.jpg" alt="Skylink">
-                    </div>
-                    <div class="client-name">Skylink Communications</div>
-                </div>
-                <div class="client-item">
-                    <div class="client-logo">
-                        <img src="Yautcha_logo.png" alt="Yautcha">
-                    </div>
-                    <div class="client-name">Yauatcha Kolkata</div>
-                </div>
-            </div>
+        <div class="about-card">
+          <div class="about-card-num">99<span>%</span></div>
+          <p>Uptime Delivered on AMC</p>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch with us for all your IT needs</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Our Location</h3>
-                            <p>3/H/1 Jhautala Lane, Near Quest Mall, Kolkata 700017</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone Number</h3>
-                            <p>+91 98366 06132</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email Address</h3>
-                            <p>info@hninfotech.com / sales@hninfotech.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Business Hours</h3>
-                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                            <p>Saturday: 10:00 AM - 2:00 PM</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3 style="margin-bottom: 20px;">Send Us a Message</h3>
-                    <form id="contactForm" action="https://formspree.io/f/mblzvdjy" method="POST">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Company Name</label>
-                            <input type="text" id="company" name="company" class="form-control" placeholder="Enter your company name">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Interested In</label>
-                            <select id="service" name="service" class="form-control">
-                                <option value="">Select a service</option>
-                                <option value="IT Consulting">IT Consulting</option>
-                                <option value="IT Infrastructure">IT Infrastructure</option>
-                                <option value="Network Infrastructure">Network Infrastructure</option>
-                                <option value="IT Hardware Sales">IT Hardware Sales</option>
-                                <option value="Maintenance & AMC">Maintenance & AMC</option>
-                                <option value="Cybersecurity">Cybersecurity</option>
-                                <option value="Surveillance (CCTV)">Surveillance (CCTV)</option>
-                                <option value="Backup Solutions">Backup Solutions</option>
-                                <option value="Custom Development">Custom Development</option>
-                                <option value="Enterprise Backup">Enterprise Backup</option>
-                                <option value="Website Development">Website Development</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Tell us about your requirements"></textarea>
-                        </div>
-                        <button type="submit" class="cta-button" style="width: 100%;">Submit</button>
-                    </form>
-                </div>
-            </div>
+        <div class="about-card">
+          <div class="about-card-num">11<span>+</span></div>
+          <p>Services Offered</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <div class="logo">
-                        <div class="logo-icon">HN</div>
-                        <div class="logo-text">HN Infotech</div>
-                    </div>
-                    <p>Providing complete IT solutions to help businesses thrive in the digital era with innovative technology and expert support.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">IT Consulting</a></li>
-                        <li><a href="#">IT Infrastructure</a></li>
-                        <li><a href="#">Network Infrastructure</a></li>
-                        <li><a href="#">IT Hardware Sales</a></li>
-                        <li><a href="#">Maintenance & AMC</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Solutions</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Cybersecurity</a></li>
-                        <li><a href="#">Surveillance (CCTV)</a></li>
-                        <li><a href="#">Backup Solutions</a></li>
-                        <li><a href="#">Custom Development</a></li>
-                        <li><a href="#">Website Development</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> 3/H/1 Jhautala Lane, Kolkata</li>
-                        <li><i class="fas fa-phone"></i> +91 98366 06132</li>
-                        <li><i class="fas fa-envelope"></i> info@hninfotech.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 HN Infotech. All Rights Reserved.</p>
-            </div>
+<!-- ========== WHY CHOOSE US ========== -->
+<section class="why-us">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="tag">Why HN Infotech</div>
+      <h2>The Difference Is in the Details</h2>
+      <p>We don't just fix problems — we prevent them. Here's what sets us apart.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Fast Response Time</h3>
+        <p>Same-day on-site support for Kolkata clients. Remote assistance within the hour. Your downtime costs us too.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Enterprise-Grade Security</h3>
+        <p>We deploy the same cybersecurity standards used by large enterprises — for businesses of all sizes.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-rupee-sign"></i></div>
+        <h3>Transparent Pricing</h3>
+        <p>Detailed quotes, no hidden fees. You know exactly what you're paying for — always.</p>
+      </div>
+      <div class="why-card fade-up">
+        <div class="why-icon"><i class="fas fa-user-tie"></i></div>
+        <h3>Dedicated Account Manager</h3>
+        <p>One point of contact who knows your business, your setup, and your priorities inside out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="tag">What We Do</div>
+      <h2>Complete IT Services Under One Roof</h2>
+      <p>From infrastructure setup to ongoing protection — everything your business needs to run at its best.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>IT Consulting</h3>
+        <p>Strategic technology planning and advisory services to align your IT investments with real business outcomes.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+        <h3>IT Infrastructure</h3>
+        <p>End-to-end design, deployment, and support for robust servers, storage, and compute environments.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-server"></i></div>
+        <h3>Network Infrastructure</h3>
+        <p>LAN/WAN, structured cabling, Wi-Fi, and firewall deployments — built to scale securely with your business.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-desktop"></i></div>
+        <h3>IT Hardware Sales</h3>
+        <p>Desktops, laptops, servers, switches, and more — sourced from leading manufacturers at competitive prices.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-tools"></i></div>
+        <h3>Maintenance & AMC</h3>
+        <p>Reliable Annual Maintenance Contracts ensuring uninterrupted operations with proactive monitoring and support.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Cybersecurity</h3>
+        <p>Endpoint protection, firewall management, threat detection, and security audits to keep your data safe.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-video"></i></div>
+        <h3>Surveillance (CCTV)</h3>
+        <p>IP camera systems, NVR/DVR setup, remote monitoring, and access control for complete physical security.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <h3>Backup Solutions</h3>
+        <p>On-premise and cloud backup tailored for SMBs — so your critical data is always recoverable.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-database"></i></div>
+        <h3>Enterprise Backup</h3>
+        <p>Scalable enterprise backup and disaster recovery solutions for business continuity at every level.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <h3>Custom Development</h3>
+        <p>Bespoke software, dashboards, and automation tools — built precisely for your workflow.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon"><i class="fas fa-globe"></i></div>
+        <h3>Website Development</h3>
+        <p>Modern, fast, and SEO-ready websites that represent your business professionally online.</p>
+        <a href="#contact" class="service-link">Enquire Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PARTNERS ========== -->
+<section class="partners" id="partners">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="tag">Technology Partners</div>
+      <h2>We Work with the World's Best</h2>
+      <p>Our certified partnerships mean you get enterprise technology with local expertise.</p>
+    </div>
+    <div class="partners-grid fade-up">
+      <div class="partner-logo"><img src="aws_logo.png" alt="Amazon Web Services"></div>
+      <div class="partner-logo"><img src="Cisco_logo.png" alt="Cisco"></div>
+      <div class="partner-logo"><img src="NinjaOne_logo.png" alt="NinjaOne"></div>
+      <div class="partner-logo"><img src="acronis_logo.png" alt="Acronis"></div>
+      <div class="partner-logo"><img src="Fortinet_logo.png" alt="Fortinet"></div>
+      <div class="partner-logo"><img src="Crowedstrike_logo.png" alt="CrowdStrike"></div>
+      <div class="partner-logo"><img src="Sophos_logo.png" alt="Sophos"></div>
+      <div class="partner-logo"><img src="Tm_logo.png" alt="Trend Micro"></div>
+      <div class="partner-logo"><img src="checkpoint_logo.png" alt="Check Point"></div>
+      <div class="partner-logo"><img src="tplink_logo.png" alt="TP-Link"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CLIENTS ========== -->
+<section class="clients" id="clients">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="tag">Our Clients</div>
+      <h2>Trusted by Leading Organisations</h2>
+      <p>From hospitality to healthcare — businesses across Kolkata rely on HN Infotech to keep their operations running.</p>
+    </div>
+    <div class="clients-grid fade-up">
+      <div class="client-card">
+        <img src="AOBPL_logo.png" alt="Apeejay Oxford Bookstores" onerror="this.style.display='none'">
+        <div class="client-card-name">Apeejay Oxford Bookstores Pvt Ltd</div>
+      </div>
+      <div class="client-card">
+        <img src="pdxrl_research_lab_logo.jpg" alt="PDxRL Research Lab" onerror="this.style.display='none'">
+        <div class="client-card-name">PDxRL Research Lab</div>
+      </div>
+      <div class="client-card">
+        <img src="Alpha_logo.png" alt="AlphaCorp" onerror="this.style.display='none'">
+        <div class="client-card-name">AlphaCorp</div>
+      </div>
+      <div class="client-card">
+        <img src="Skylink_logo.jpg" alt="Skylink Communications" onerror="this.style.display='none'">
+        <div class="client-card-name">Skylink Communications</div>
+      </div>
+      <div class="client-card">
+        <img src="Yautcha_logo.png" alt="Yauatcha Kolkata" onerror="this.style.display='none'">
+        <div class="client-card-name">Yauatcha Kolkata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div class="tag">Client Voices</div>
+      <h2>Don't Take Our Word for It</h2>
+      <p>Here's what our clients say about working with HN Infotech.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"HN Infotech completely revamped our IT infrastructure across multiple locations. Professional, fast, and genuinely invested in making things work. We haven't had a major outage since."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AO</div>
+          <div>
+            <div class="testi-name">IT Manager</div>
+            <div class="testi-role">Apeejay Oxford Bookstores</div>
+          </div>
         </div>
-    </footer>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Our CCTV and network setup was handled flawlessly. The team is quick to respond and very knowledgeable. Highly recommend HN Infotech for any IT requirement."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">YK</div>
+          <div>
+            <div class="testi-name">Operations Head</div>
+            <div class="testi-role">Yauatcha Kolkata</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"We needed a robust backup and cybersecurity solution for our research environment. HN Infotech understood our requirements perfectly and delivered on time."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PD</div>
+          <div>
+            <div class="testi-name">Principal Researcher</div>
+            <div class="testi-role">PDxRL Research Lab</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Mobile menu toggle
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
+<!-- ========== CONTACT ========== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-left fade-up">
+        <div class="tag">Get in Touch</div>
+        <h2>Let's Talk About Your IT Needs</h2>
+        <p>Whether you need an urgent fix or want to plan a complete IT overhaul — we're here to help. Reach out and we'll get back to you within 2 business hours.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-detail">
+              <strong>Our Office</strong>
+              <span>3/H/1 Jhautala Lane, Near Quest Mall, Kolkata — 700017</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-detail">
+              <strong>Call / WhatsApp</strong>
+              <span><a href="tel:+919836606132">+91 98366 06132</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-detail">
+              <strong>Email Us</strong>
+              <span><a href="mailto:info@hninfotech.com">info@hninfotech.com</a> &nbsp;|&nbsp; <a href="mailto:sales@hninfotech.com">sales@hninfotech.com</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-detail">
+              <strong>Business Hours</strong>
+              <span>Mon – Fri: 9:00 AM – 6:00 PM &nbsp;|&nbsp; Sat: 10:00 AM – 2:00 PM</span>
+            </div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.0193!2d88.3611!3d22.5448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDMyJzQxLjMiTiA4OMKwMjEnNDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="HN Infotech Office Location">
+          </iframe>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <h3>Send Us a Message</h3>
+        <p>Fill in the form and our team will contact you shortly.</p>
+        <form id="contactForm" action="https://formspree.io/f/mblzvdjy" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" class="form-control" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="you@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" class="form-control" placeholder="Your company">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service" class="form-control">
+              <option value="">— Select a service —</option>
+              <option>IT Consulting</option>
+              <option>IT Infrastructure</option>
+              <option>Network Infrastructure</option>
+              <option>IT Hardware Sales</option>
+              <option>Maintenance & AMC</option>
+              <option>Cybersecurity</option>
+              <option>Surveillance (CCTV)</option>
+              <option>Backup Solutions</option>
+              <option>Enterprise Backup</option>
+              <option>Custom Development</option>
+              <option>Website Development</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Tell us about your requirements or the problem you're facing…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Smooth scrolling for navigation links and close mobile menu
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                // Close mobile menu if open
-                document.querySelector('.nav-links').classList.remove('active');
-                
-                // Smooth scroll to target
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-text">HN <span>INFOTECH</span></div>
+        <p>Providing complete IT solutions to businesses in Kolkata and Eastern India. Reliable. Responsive. Results-driven.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">IT Consulting</a></li>
+          <li><a href="#services">IT Infrastructure</a></li>
+          <li><a href="#services">Network Infrastructure</a></li>
+          <li><a href="#services">IT Hardware Sales</a></li>
+          <li><a href="#services">Maintenance & AMC</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#services">Cybersecurity</a></li>
+          <li><a href="#services">Surveillance (CCTV)</a></li>
+          <li><a href="#services">Backup Solutions</a></li>
+          <li><a href="#services">Custom Development</a></li>
+          <li><a href="#services">Website Development</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>3/H/1 Jhautala Lane, Near Quest Mall, Kolkata 700017</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <span><a href="tel:+919836606132" style="color:inherit">+91 98366 06132</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span><a href="mailto:info@hninfotech.com" style="color:inherit">info@hninfotech.com</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> HN Infotech. All Rights Reserved.</p>
+      <a href="#top">Back to Top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== WHATSAPP FLOAT ========== -->
+<a href="https://wa.me/919836606132?text=Hi%20HN%20Infotech%2C%20I%27d%20like%20to%20enquire%20about%20your%20IT%20services." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // Dynamic copyright year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  // Close nav on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Scroll animations
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Header shadow on scroll
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 10
+      ? '0 4px 24px rgba(10,22,40,.12)' : '0 2px 16px rgba(10,22,40,.07)';
+  });
+
+  // Form submission feedback
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', async (e) => {
+    const btn = form.querySelector('button[type="submit"]');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+    btn.disabled = true;
+  });
+</script>
 </body>
 </html>
