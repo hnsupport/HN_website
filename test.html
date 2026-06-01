@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HN Infotech — Enterprise IT, Security & Infrastructure</title>
+  <meta name="description" content="HN Infotech provides IT infrastructure, cybersecurity, network, surveillance and cloud solutions for businesses." />
+  <meta name="author" content="HN Infotech" />
+
+  <!-- Tailwind CDN (for quick prototype). For production, build Tailwind properly. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--brand:#003646;--accent:#00C4B3;}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+    .container-max{max-width:1120px;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
+  </style>
+</head>
+<body class="bg-white text-slate-700">
+
+  <!-- NAV -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="container-max flex items-center justify-between h-20">
+      <a class="flex items-center gap-3" href="#home">
+        <div class="rounded-md bg-gradient-to-tr from-slate-900 to-slate-700 text-white p-3">
+          <!-- simple logo -->
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="18" rx="2" stroke="white" stroke-width="1.2"/><path d="M6 15V9" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 15V9" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-semibold text-slate-900">HN Infotech</h1>
+          <p class="text-xs text-slate-500 -mt-1">Enterprise IT & Security Solutions</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#services" class="hover:text-slate-900">Services</a>
+        <a href="#about" class="hover:text-slate-900">About</a>
+        <a href="#clients" class="hover:text-slate-900">Clients</a>
+        <a href="#contact" class="hover:text-slate-900">Contact</a>
+        <a href="#" class="inline-block ml-2 px-4 py-2 text-sm rounded-md border border-slate-200 hover:bg-slate-50">Request Consultation</a>
+      </nav>
+
+      <button id="mobileBtn" class="md:hidden p-2 rounded-md focus:outline-none">
+        <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t">
+      <div class="flex flex-col p-4 gap-3">
+        <a href="#services" class="py-2">Services</a>
+        <a href="#about" class="py-2">About</a>
+        <a href="#clients" class="py-2">Clients</a>
+        <a href="#contact" class="py-2">Contact</a>
+        <a href="#" class="py-2 font-semibold">Request Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="home">
+    <section class="bg-gradient-to-r from-white via-slate-50 to-white py-20">
+      <div class="container-max grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7">
+          <p class="text-sm text-slate-500 uppercase tracking-wide">Enterprise IT & Security</p>
+          <h2 class="mt-4 text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">Empowering Businesses with Reliable IT & Technology Solutions</h2>
+          <p class="mt-4 text-slate-600 max-w-prose">HN Infotech delivers end-to-end IT infrastructure, cybersecurity, consulting, and digital solutions designed to strengthen operations and accelerate business performance. Trusted by organizations across industries for secure, scalable deployments and proactive support.</p>
+
+          <div class="mt-6 flex gap-3">
+            <a href="#contact" class="inline-flex items-center gap-2 bg-slate-900 text-white px-5 py-3 rounded-md text-sm font-medium">Request a Consultation</a>
+            <a href="#services" class="inline-flex items-center gap-2 border border-slate-200 px-5 py-3 rounded-md text-sm">Explore Services</a>
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-slate-600">
+            <div><strong class="text-slate-900">15+</strong><div>Years Experience</div></div>
+            <div><strong class="text-slate-900">200+</strong><div>Projects Delivered</div></div>
+            <div><strong class="text-slate-900">50+</strong><div>Enterprise Clients</div></div>
+            <div><strong class="text-slate-900">24/7</strong><div>Support & Monitoring</div></div>
+          </div>
+        </div>
+
+        <div class="md:col-span-5">
+          <div class="rounded-xl border p-6 shadow-sm bg-white">
+            <h3 class="text-lg font-semibold">Request a Free IT Consultation</h3>
+            <p class="text-sm text-slate-500 mt-1">Fill in a few details and our specialist will contact you within one business day.</p>
+            <form id="leadForm" class="mt-4 grid gap-3">
+              <input required name="name" placeholder="Full name" class="border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-200" />
+              <input required type="email" name="email" placeholder="Email address" class="border rounded-md px-3 py-2 text-sm" />
+              <input required name="phone" placeholder="Phone" class="border rounded-md px-3 py-2 text-sm" />
+              <select name="service" class="border rounded-md px-3 py-2 text-sm">
+                <option>IT Infrastructure</option>
+                <option>Network & Security</option>
+                <option>Cloud & Backup</option>
+                <option>Surveillance & Access Control</option>
+                <option>Website & Software</option>
+              </select>
+              <textarea name="message" rows="3" placeholder="Brief message (optional)" class="border rounded-md px-3 py-2 text-sm"></textarea>
+              <div class="flex items-center gap-2">
+                <button type="submit" class="bg-accent inline-flex items-center gap-2 text-white px-4 py-2 rounded-md" style="background:var(--accent);">Submit Request</button>
+                <p id="formMsg" class="text-sm text-slate-500"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-16">
+      <div class="container-max">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="text-sm text-slate-500 uppercase">Our Services</p>
+          <h3 class="mt-3 text-2xl font-semibold text-slate-900">Comprehensive IT Services to Transform Your Business</h3>
+          <p class="mt-2 text-slate-600">From infrastructure and networks to cybersecurity, cloud, and surveillance — we design and operate technology that aligns with your objectives.</p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Service Card -->
+          <article class="p-6 border rounded-lg hover:shadow-lg transition">
+            <div class="flex items-center gap-4">
+              <div class="p-3 rounded-md bg-slate-50">
+                <!-- icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 8v8m4-4H8"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-900">IT Infrastructure Management</h4>
+                <p class="text-sm text-slate-600 mt-1">Deployment and lifecycle management of servers, storage, virtualization and endpoints for optimal performance.</p>
+              </div>
+            </div>
+            <ul class="mt-3 text-sm text-slate-600 list-disc list-inside">
+              <li>Server & Storage Solutions</li>
+              <li>Virtualization & HA</li>
+              <li>Endpoint Management</li>
+            </ul>
+          </article>
+
+          <article class="p-6 border rounded-lg hover:shadow-lg transition">
+            <div class="flex items-center gap-4">
+              <div class="p-3 rounded-md bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 11c0-1.657 0-3 0-3a2 2 0 012-2h4v10h-4a2 2 0 01-2-2zM6 7h.01M6 12h.01M6 17h.01"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-900">Network Architecture & Security</h4>
+                <p class="text-sm text-slate-600 mt-1">Design and implementation of secure, resilient networks with enterprise-grade firewall and monitoring solutions.</p>
+              </div>
+            </div>
+            <ul class="mt-3 text-sm text-slate-600 list-disc list-inside">
+              <li>LAN / WAN Design</li>
+              <li>Firewall & VPN</li>
+              <li>Network Monitoring</li>
+            </ul>
+          </article>
+
+          <article class="p-6 border rounded-lg hover:shadow-lg transition">
+            <div class="flex items-center gap-4">
+              <div class="p-3 rounded-md bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M12 22c4.97 0 9-4.03 9-9S16.97 4 12 4 3 8.03 3 13s4.03 9 9 9z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-900">Cybersecurity</h4>
+                <p class="text-sm text-slate-600 mt-1">Comprehensive program to secure networks, endpoints and data, aligned to compliance and best practices.</p>
+              </div>
+            </div>
+            <ul class="mt-3 text-sm text-slate-600 list-disc list-inside">
+              <li>Threat Management</li>
+              <li>Vulnerability Assessment</li>
+              <li>Policy & Compliance</li>
+            </ul>
+          </article>
+
+          <article class="p-6 border rounded-lg hover:shadow-lg transition">
+            <div class="flex items-center gap-4">
+              <div class="p-3 rounded-md bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 7h18M3 12h18M3 17h18"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-900">Cloud & Backup Solutions</h4>
+                <p class="text-sm text-slate-600 mt-1">Scalable backup, DR and cloud strategies to ensure business continuity and data protection.</p>
+              </div>
+            </div>
+            <ul class="mt-3 text-sm text-slate-600 list-disc list-inside">
+              <li>Cloud Migration & Hybrid Cloud</li>
+              <li>Automated Backups</li>
+              <li>Disaster Recovery</li>
+            </ul>
+          </article>
+
+          <article class="p-6 border rounded-lg hover:shadow-lg transition">
+            <div class="flex items-center gap-4">
+              <div class="p-3 rounded-md bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 7v4a5 5 0 005 5h8a5 5 0 005-5V7"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-900">Surveillance & Access Control</h4>
+                <p class="text-sm text-slate-600 mt-1">Integrated CCTV, biometric and access solutions to secure facilities and control entry.</p>
+              </div>
+            </div>
+            <ul class="mt-3 text-sm text-slate-600 list-disc list-inside">
+              <li>IP CCTV & NVR</li>
+              <li>Access Management</li>
+              <li>Remote Monitoring</li>
+            </ul>
+          </article>
+
+          <article class="p-6 border rounded-lg hover:shadow-lg transition">
+            <div class="flex items-center gap-4">
+              <div class="p-3 rounded-md bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3 7h18M7 7v10a3 3 0 003 3h4a3 3 0 003-3V7"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-900">Website & Software Development</h4>
+                <p class="text-sm text-slate-600 mt-1">Secure, responsive solutions engineered for business objectives and user experience.</p>
+              </div>
+            </div>
+            <ul class="mt-3 text-sm text-slate-600 list-disc list-inside">
+              <li>Corporate Websites</li>
+              <li>Web Applications & Portals</li>
+              <li>Maintenance & Support</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16 bg-slate-50">
+      <div class="container-max grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-semibold text-slate-900">About HN Infotech</h3>
+          <p class="mt-4 text-slate-600">HN Infotech is a professional IT services and solutions provider specializing in infrastructure design, cybersecurity, consulting, surveillance, cloud systems, and digital transformation. We help organizations modernize their infrastructure, safeguard critical assets, and achieve operational excellence through pragmatic, standards-based solutions.</p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 bg-white rounded-md border">
+              <h4 class="font-semibold">Mission</h4>
+              <p class="text-sm text-slate-600 mt-2">To deliver reliable and innovative IT solutions that enable business continuity and growth.</p>
+            </div>
+            <div class="p-4 bg-white rounded-md border">
+              <h4 class="font-semibold">Vision</h4>
+              <p class="text-sm text-slate-600 mt-2">To be the preferred technology partner for enterprises seeking resilient and secure IT systems.</p>
+            </div>
+            <div class="p-4 bg-white rounded-md border">
+              <h4 class="font-semibold">Values</h4>
+              <p class="text-sm text-slate-600 mt-2">Integrity • Quality • Customer Commitment • Innovation</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-1">
+          <div class="rounded-lg overflow-hidden border bg-white p-6">
+            <h4 class="font-semibold">Our Approach</h4>
+            <ol class="list-decimal list-inside text-sm text-slate-600 mt-3">
+              <li>Assessment & Requirement Analysis</li>
+              <li>Solution Architecture & Planning</li>
+              <li>Implementation & Testing</li>
+              <li>Handover & Support</li>
+            </ol>
+            <a href="#contact" class="mt-4 inline-block text-sm font-medium">Speak with an expert →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section id="clients" class="py-16">
+      <div class="container-max text-center">
+        <p class="text-sm text-slate-500 uppercase">Trusted By</p>
+        <h3 class="mt-3 text-2xl font-semibold">Our Clients & Partners</h3>
+        <p class="mt-2 text-slate-600 max-w-prose mx-auto">We serve clients across retail, hospitality, corporate and education sectors.</p>
+
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+          <!-- Placeholder logos. Replace with actual logos with uniform sizes -->
+          <div class="p-4 bg-white rounded-md border flex items-center justify-center">Logo A</div>
+          <div class="p-4 bg-white rounded-md border flex items-center justify-center">Logo B</div>
+          <div class="p-4 bg-white rounded-md border flex items-center justify-center">Logo C</div>
+          <div class="p-4 bg-white rounded-md border flex items-center justify-center">Logo D</div>
+          <div class="p-4 bg-white rounded-md border flex items-center justify-center">Logo E</div>
+          <div class="p-4 bg-white rounded-md border flex items-center justify-center">Logo F</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-16 bg-slate-50">
+      <div class="container-max">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="text-sm text-slate-500 uppercase">Testimonials</p>
+          <h3 class="mt-3 text-2xl font-semibold text-slate-900">What Clients Say</h3>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <blockquote class="p-6 bg-white border rounded-lg">
+            <p class="text-slate-600">“HN Infotech delivered a secure network and surveillance solution for our retail outlets. Their team was professional, timely and communicative throughout the engagement.”</p>
+            <footer class="mt-4 text-sm text-slate-500">— Operations Head, Retail Chain</footer>
+          </blockquote>
+
+          <blockquote class="p-6 bg-white border rounded-lg">
+            <p class="text-slate-600">“The migration to hybrid cloud was executed with minimal downtime and excellent documentation. Support post-delivery has been excellent.”</p>
+            <footer class="mt-4 text-sm text-slate-500">— IT Manager, Manufacturing</footer>
+          </blockquote>
+
+          <blockquote class="p-6 bg-white border rounded-lg">
+            <p class="text-slate-600">“Their security audit helped us find critical gaps and their remediation plan improved our security posture significantly.”</p>
+            <footer class="mt-4 text-sm text-slate-500">— CTO, Hospitality</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-16">
+      <div class="container-max grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-2xl font-semibold">Contact Us</h3>
+          <p class="mt-3 text-slate-600">Reach out for consultations, project enquiries or support. Our team will respond promptly.</p>
+
+          <div class="mt-6 space-y-4">
+            <div class="p-4 bg-white border rounded-md">
+              <strong>Address</strong>
+              <p class="text-sm text-slate-600 mt-1">HN Infotech, [Your Address Line 1], [City], [State] — India</p>
+            </div>
+            <div class="p-4 bg-white border rounded-md">
+              <strong>Phone</strong>
+              <p class="text-sm text-slate-600 mt-1">+91 XXXXXXXXXX</p>
+            </div>
+            <div class="p-4 bg-white border rounded-md">
+              <strong>Email</strong>
+              <p class="text-sm text-slate-600 mt-1">info@hninfotech.com • support@hninfotech.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="rounded-md overflow-hidden border">
+            <!-- Replace iframe src with a working Google Maps embed for production -->
+            <iframe class="w-full h-64" src="https://maps.google.com/maps?q=kolkata&t=&z=13&ie=UTF8&iwloc=&output=embed" aria-hidden="false"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white py-10 mt-8">
+    <div class="container-max grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
+        <h4 class="font-semibold">HN Infotech</h4>
+        <p class="text-sm text-slate-300 mt-2">Enterprise IT & Security Solutions. Delivering secure, scalable, and managed technology services.</p>
+      </div>
+      <div>
+        <h5 class="font-semibold">Services</h5>
+        <ul class="mt-2 text-sm text-slate-300 space-y-1">
+          <li>IT Infrastructure</li>
+          <li>Network & Security</li>
+          <li>Cloud & Backup</li>
+          <li>Surveillance</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold">Contact</h5>
+        <p class="text-sm text-slate-300 mt-2">Email: info@hninfotech.com</p>
+        <p class="text-sm text-slate-300">Phone: +91 XXXXXXXXXX</p>
+      </div>
+    </div>
+
+    <div class="container-max text-center text-slate-400 text-sm mt-8">&copy; <span id="year"></span> HN Infotech. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+    mobileBtn.addEventListener('click', ()=>{
+      mobileMenu.classList.toggle('hidden');
+      menuOpen.classList.toggle('hidden');
+      menuClose.classList.toggle('hidden');
+    });
+
+    // form submit (demo behaviour)
+    document.getElementById('leadForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      document.getElementById('formMsg').textContent = 'Request submitted. Our team will contact you shortly.';
+      this.reset();
+    });
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
